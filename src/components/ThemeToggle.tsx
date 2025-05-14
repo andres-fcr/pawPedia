@@ -3,8 +3,16 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/UseTheme";
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  
+  const { theme, setTheme } = useTheme();
+
+  function toggleTheme() {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  }
+
   return (
     <Button
       variant="ghost"
