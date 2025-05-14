@@ -1,5 +1,4 @@
 import { ThemeToggle } from "./components/ThemeToggle";
-import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import ThemeProvider from "./providers/ThemeProvider";
 
 function App() {
