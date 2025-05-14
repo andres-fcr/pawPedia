@@ -1,13 +1,13 @@
-import { ThemeToggle } from "./components/ThemeToggle";
+import Header from "./components/Header";
 import ThemeProvider from "./providers/ThemeProvider";
 
 function App() {
   return (
     <>
       <ThemeProvider>
-        <div className="absolute top-4 right-4">
-          <ThemeToggle />
-        </div>
+        <main>
+          <Header />
+        </main>
       </ThemeProvider>
     </>
   );
