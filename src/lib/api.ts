@@ -68,7 +68,7 @@ export const fetchData = async (
     // Normalize the data to match our application's structure
     if (section === "cats") {
       return data.map((breed: CatBreed) => ({
-        id: `cat-${breed.id}`,
+        id: breed.id,
         name: breed.name,
         countryCode: breed.country_code,
         description: breed.description,
@@ -85,7 +85,7 @@ export const fetchData = async (
 
     if (section === "dogs") {
       return data.map((breed: DogBreed) => ({
-        id: `dog-${breed.id}`,
+        id: breed.id,
         name: breed.name,
         countryCode: breed.country_code,
         description: breed.description,
