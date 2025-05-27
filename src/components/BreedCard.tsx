@@ -17,11 +17,11 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
   return (
     <div className="h-full translate-y-5">
       <Card
-        className="h-full cursor-pointer overflow-hidden bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:border-amber-400 dark:hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.03] hover:-translate-y-1"
+        className="h-full p-0 cursor-pointer overflow-hidden bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:border-amber-400 dark:hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.03] hover:-translate-y-1"
         onClick={handleClick}
       >
-        <CardContent className="p-0 px-4">
-          <div className="relative w-full pt-[75%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
+        <CardContent className="p-0">
+          <div className="relative w-full pt-[95%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
             <img
               src={breed.image}
               alt={breed.name}
@@ -34,10 +34,10 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
           </div>
         </CardContent>
         <CardFooter className="p-4 flex flex-col items-start">
-          <h3 className="font-medium text-lg text-slate-900 dark:text-slate-100">
+          <h3 className="font-xl text-lg text-slate-900 dark:text-slate-100">
             {breed.name}
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-medium text-slate-600 dark:text-slate-400">
             {breed.origin}
           </p>
         </CardFooter>
