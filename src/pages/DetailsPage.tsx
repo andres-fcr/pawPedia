@@ -19,8 +19,6 @@ const DetailsPage = () => {
   const handleReturn = () => navigate(`/${section || "/cats"}`);
 
   useEffect(() => {
-    console.log({ breedId, breeds });
-
     if (breedId && breeds.length > 0) {
       const getBreedDetails = (breedId: string) => {
         const breedDetails = breeds.find((item) => item.id === breedId);

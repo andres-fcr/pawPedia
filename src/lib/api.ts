@@ -50,6 +50,8 @@ export interface NormalizedBreed {
   weight: string;
   height?: string;
   image: string;
+  imageAlt?: string;
+  externalLinks?: string[];
   bredFor?: string;
   temperament?: string[];
 }
@@ -77,9 +79,9 @@ export const fetchData = async (
         weight: breed.weight.metric,
         height: null,
         temperament: breed.temperament ? breed.temperament.split(", ") : [],
-        image: breed.reference_image_id
-          ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
-          : "/placeholder.svg?height=400&width=600",
+        image: `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`,
+        imageAlt: `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.png`,
+        externalLinks: breed.external_links || [],
       }));
     }
 
@@ -95,9 +97,9 @@ export const fetchData = async (
         height: breed.height.metric,
         temperament: breed.temperament ? breed.temperament.split(", ") : [],
         bredFor: breed.bred_for || "Unknown",
-        image: breed.reference_image_id
-          ? `https://cdn2.thedogapi.com/images/${breed.reference_image_id}.jpg`
-          : "/placeholder.svg?height=400&width=600",
+        image: `https://cdn2.thedogapi.com/images/${breed.reference_image_id}.jpg`,
+        imageAlt: `https://cdn2.thedogapi.com/images/${breed.reference_image_id}.png`,
+        externalLinks: breed.external_links || [],
       }));
     }
 

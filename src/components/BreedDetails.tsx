@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ArrowLeft, Badge, PawPrintIcon as Paw, ZoomIn } from "lucide-react";
+import { ArrowLeft, PawPrintIcon as Paw, ZoomIn } from "lucide-react";
 
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
+import { Badge } from "./ui/badge";
 import type { NormalizedBreed } from "@/lib/api";
 import ImageModal from "./ImageModal";
 
@@ -14,7 +15,7 @@ interface BreedDetailsProps {
 
 const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
   const [isZoomOpen, setIsZoomOpen] = useState(false);
-
+  // console.log({breed})
   return (
     <>
       <div className="container mx-auto px-4 py-8">
@@ -59,12 +60,16 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-lg overflow-hidden bg-white dark:bg-slate-800 shadow-md group">
-                <div className="relative aspect-[4/3] w-full">
+                <div className="relative aspect-[4/3] w-full h-full">
                   <img
-                    src={breed.image || "/placeholder.svg?height=600&width=800"}
+                    src={breed.image || breed.imageAlt}
                     alt={breed.name}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
+                    className="object-cover h-full w-full"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        breed.imageAlt ||
+                        "/placeholder.svg?height=600&width=800";
+                    }}
                   />
                   <button
                     onClick={() => setIsZoomOpen(true)}
@@ -100,9 +105,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
                       Height
                     </h3>
                     <p className="text-slate-800 dark:text-slate-200">
-                      {breed.height === "N/A"
-                        ? "Not available"
-                        : `${breed.height} cm`}
+                      {!breed.height ? "Not available" : `${breed.height} cm`}
                     </p>
                   </div>
                   <div>

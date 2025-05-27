@@ -20,13 +20,16 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
         className="h-full cursor-pointer overflow-hidden bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:border-amber-400 dark:hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.03] hover:-translate-y-1"
         onClick={handleClick}
       >
-        <CardContent className="p-0">
-          <div className="relative w-full pt-[75%] overflow-hidden bg-slate-200 dark:bg-slate-700">
+        <CardContent className="p-0 px-4">
+          <div className="relative w-full pt-[75%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
             <img
               src={breed.image}
               alt={breed.name}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover absolute inset-0 transition-transform duration-300 hover:scale-105"
+              className="object-cover absolute inset-0 transition-transform duration-300 h-full w-full"
+              onError={(e) => {
+                e.currentTarget.src =
+                  breed.imageAlt || "/placeholder.svg?height=600&width=800";
+              }}
             />
           </div>
         </CardContent>
