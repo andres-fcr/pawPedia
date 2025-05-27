@@ -5,12 +5,15 @@ import { getLocalStorageItem, setLocalStorageItem } from "@/lib/utils";
 
 export const useSpecies = (section: Sections) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<NormalizedBreed[]>(
-    getLocalStorageItem(section) ?? []
-  );
+  const [data, setData] = useState<NormalizedBreed[]>([]);
 
   useEffect(() => {
-    if (data.length > 0) return;
+    const localData: NormalizedBreed[] | null = getLocalStorageItem(section);
+
+    if (localData?.length) {
+      setData(localData);
+      return;
+    }
 
     const fetchSectionData = async (section: Sections) => {
       try {

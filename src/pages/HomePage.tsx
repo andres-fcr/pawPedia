@@ -34,7 +34,7 @@ const HomePage = () => {
 
   const updateURL = (params: { search?: string; page?: number }) => {
     const searchParams = new URLSearchParams(location.search);
-    console.log(params);
+
     if (params.search !== undefined) {
       searchParams.set("search", params.search);
     }
