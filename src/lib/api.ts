@@ -87,7 +87,7 @@ export const fetchData = async (
 
     if (section === "dogs") {
       return data.map((breed: DogBreed) => ({
-        id: breed.id,
+        id: breed.id.toString(),
         name: breed.name,
         countryCode: breed.country_code,
         description: breed.description,

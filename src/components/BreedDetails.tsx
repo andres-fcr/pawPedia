@@ -46,7 +46,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
             </div>
           </div>
         )}
-        {breed && (
+        {breed && !isLoading && (
           <div className="max-w-4xl mx-auto details-card">
             <div className="flex items-center gap-2 mb-8">
               <Paw className="h-5 w-5 text-amber-500 dark:text-amber-400" />
@@ -143,7 +143,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
           </div>
         )}
 
-        {!breed && (
+        {!breed && !isLoading && (
           <div className="max-w-4xl mx-auto text-center py-12">
             <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 p-6 rounded-lg">
               <p className="text-xl">Details not found!</p>
@@ -158,6 +158,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
           </div>
         )}
       </div>
+
       <ImageModal
         isOpen={isZoomOpen}
         onOpenChange={() => setIsZoomOpen(false)}
