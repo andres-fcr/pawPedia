@@ -1,13 +1,12 @@
 import { useLocation, useNavigate } from "react-router";
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { type Sections } from "@/lib/api";
 import { Skeleton } from "@/components/ui/skeleton";
 import BreedCard from "@/components/BreedCard";
 import { Pagination } from "@/components/ui/pagination";
 import { useSpecies } from "@/hooks/UseSpecies";
-import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import TabsSection from "@/components/TabsSection";
+import SearchBar from "@/components/SearchBar";
 
 const itemsPerPage = 12;
 
@@ -21,8 +20,8 @@ const HomePage = () => {
     Number(new URLSearchParams(location.search).get("page")) || 1;
 
   const searchQuery = new URLSearchParams(location.search).get("search") || "";
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
+
+  const handleSearchChange = (query: string) => {
     updateURL({ search: query, page: 1 });
   };
 
@@ -60,28 +59,14 @@ const HomePage = () => {
 
   return (
     <>
-      <Tabs
-        defaultValue={section}
-        className="container mx-auto mb-8 bg-am"
-        onValueChange={handleTabChange}
-      >
-        <TabsList className="w-full">
-          <TabsTrigger value="cats">🐱 Cats</TabsTrigger>
-          <TabsTrigger value="dogs">🐶 Dogs</TabsTrigger>
-        </TabsList>
-      </Tabs>
+      <TabsSection section={section} handleTabChange={handleTabChange} />
 
-      <div className="relative container mx-auto mb-6">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
-        <Input
-          type="text"
-          placeholder={`Search ${section} breeds...`}
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="pl-10 bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-500"
-          disabled={isLoading}
-        />
-      </div>
+      <SearchBar
+        searchQuery={searchQuery}
+        handleSearchChange={handleSearchChange}
+        section={section}
+        disabled={isLoading}
+      />
 
       <section className="container mx-auto mb-8">
         {isLoading && (
@@ -112,13 +97,13 @@ const HomePage = () => {
             ))}
           </section>
         )}
-        {!isLoading && breeds.length === 0 && (
+        {!isLoading && filteredBreeds.length === 0 && (
           <p className="text-center text-gray-500">
             No breeds found for this section.
           </p>
         )}
       </section>
-      {!isLoading && breeds.length > 0 && (
+      {!isLoading && filteredBreeds.length > itemsPerPage && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
