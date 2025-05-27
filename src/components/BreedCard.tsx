@@ -21,7 +21,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
         onClick={handleClick}
       >
         <CardContent className="p-0">
-          <div className="relative w-full pt-[95%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
+          <div className="relative w-full pt-[75%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
             <img
               src={breed.image}
               alt={breed.name}

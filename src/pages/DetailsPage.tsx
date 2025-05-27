@@ -16,7 +16,7 @@ const DetailsPage = () => {
 
   const [breed, setBreed] = useState<NormalizedBreed | null>(null);
 
-  const handleReturn = () => navigate(`/${section || "/cats"}`);
+  const handleReturn = () => navigate(-1);
 
   useEffect(() => {
     if (breedId && breeds.length > 0) {

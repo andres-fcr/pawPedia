@@ -15,7 +15,7 @@ interface BreedDetailsProps {
 
 const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
   const [isZoomOpen, setIsZoomOpen] = useState(false);
-  // console.log({breed})
+
   return (
     <>
       <div className="container mx-auto px-4 py-8">
@@ -26,7 +26,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
             className="mb-6 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-amber-100/50 dark:hover:bg-slate-800"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to breeds
+            Back
           </Button>
         )}
 
@@ -48,15 +48,12 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
         )}
         {breed && (
           <div className="max-w-4xl mx-auto details-card">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-8">
               <Paw className="h-5 w-5 text-amber-500 dark:text-amber-400" />
               <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100">
                 {breed.name}
               </h1>
             </div>
-            <p className="text-slate-600 dark:text-slate-400 mb-8">
-              Origin: {breed.origin}
-            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative rounded-lg overflow-hidden bg-white dark:bg-slate-800 shadow-md group">
