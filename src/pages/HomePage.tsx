@@ -62,44 +62,30 @@ const HomePage = () => {
     <>
       <TabsSection section={section} handleTabChange={handleTabChange} />
 
-      <section className="relative container mx-auto mb-10 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-amber-50 to-primary/5 dark:from-primary/20 dark:via-primary/10 dark:to-amber-900/20 border border-border">
+      <section className="relative container mx-auto mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 via-amber-50 to-primary/5 dark:from-primary/20 dark:via-primary/10 dark:to-amber-900/20 border border-border">
         <div className="absolute inset-0 bg-pattern opacity-50 dark:opacity-30" />
-        <div className="relative px-6 py-12 md:px-12 md:py-16 lg:py-20">
-          <div className="flex items-center gap-3 mb-4">
-            {section === "cats" ? (
-              <Cat className="w-8 h-8 text-primary animate-float" />
-            ) : (
-              <Dog className="w-8 h-8 text-primary animate-float" />
-            )}
-            <span className="text-muted-foreground font-outfit text-lg tracking-wide uppercase">
-              Explore {section === "cats" ? "Feline" : "Canine"} Breeds
-            </span>
+        <div className="relative px-5 py-6 md:px-8 md:py-8 flex items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              {section === "cats" ? (
+                <Cat className="w-5 h-5 text-primary" />
+              ) : (
+                <Dog className="w-5 h-5 text-primary" />
+              )}
+              <span className="text-muted-foreground font-outfit text-sm tracking-wide uppercase">
+                Explore {section === "cats" ? "Feline" : "Canine"} Breeds
+              </span>
+            </div>
+            <h2 className="text-xl md:text-2xl font-outfit font-bold text-foreground">
+              Discover the Perfect <span className="text-primary">Companion</span>
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-outfit font-bold text-foreground mb-4">
-            Discover the Perfect
-            <br />
-            <span className="text-primary">Companion</span>
-          </h2>
-          <p className="text-muted-foreground max-w-lg text-lg">
-            Browse {breeds.length}+ breeds with detailed profiles, temperament insights, and care guides.
-          </p>
-          <div className="flex gap-6 mt-8">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-outfit font-bold text-lg">{breeds.length}</span>
-              </div>
-              <span className="text-muted-foreground text-sm">Breeds</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-outfit font-bold">A-Z</span>
-              </div>
-              <span className="text-muted-foreground text-sm">Complete</span>
-            </div>
+          <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+            <span className="text-primary font-outfit font-bold">{breeds.length}</span>
+            <span className="text-muted-foreground text-sm">breeds</span>
           </div>
         </div>
-        <div className="absolute -right-8 -top-8 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-float" />
-        <div className="absolute -left-4 -bottom-4 w-24 h-24 bg-amber-400/10 rounded-full blur-xl animate-float-delay" />
+        <div className="absolute -right-4 -top-4 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-float" />
       </section>
 
       <SearchBar
