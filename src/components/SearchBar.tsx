@@ -22,24 +22,27 @@ const SearchBar = ({
   };
 
   return (
-    <div className="relative container mx-auto mb-6">
-      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
-      <Input
-        type="text"
-        placeholder={`Search ${section} breeds...`}
-        value={searchQuery}
-        onChange={onSearch}
-        className="pl-10 bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 placeholder:text-slate-500"
-        disabled={disabled}
-      />
-      {!!searchQuery && (
-        <button
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400"
-          onClick={() => handleSearchChange("")}
-        >
-          <X />
-        </button>
-      )}
+    <div className="relative container mx-auto mb-8">
+      <div className="relative group">
+        <div className="absolute inset-0 bg-primary/10 rounded-xl blur-sm group-focus-within:bg-primary/20 group-focus-within:blur-md transition-all duration-300" />
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors duration-300 z-10" />
+        <Input
+          type="text"
+          placeholder={`Search ${section} breeds...`}
+          value={searchQuery}
+          onChange={onSearch}
+          className="relative pl-12 pr-12 bg-card border-border text-foreground placeholder:text-muted-foreground rounded-xl h-14 text-lg focus-visible:ring-primary/50 transition-all duration-300 shadow-sm"
+          disabled={disabled}
+        />
+        {!!searchQuery && (
+          <button
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors duration-200 z-10"
+            onClick={() => handleSearchChange("")}
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

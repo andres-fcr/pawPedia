@@ -9,36 +9,41 @@ interface BreedCardProps {
 }
 
 export default function BreedCard({ breed, onClick }: BreedCardProps) {
-  // Function to handle click event
   const handleClick = () => {
     onClick(breed.id);
   };
 
   return (
-    <div className="h-full translate-y-5">
+    <div className="h-full group perspective-1000">
       <Card
-        className="h-full p-0 cursor-pointer overflow-hidden bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:border-amber-400 dark:hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.03] hover:-translate-y-1"
+        className="h-full p-0 cursor-pointer overflow-hidden bg-card border-border hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:shadow-primary/10"
         onClick={handleClick}
       >
         <CardContent className="p-0">
-          <div className="relative w-full pt-[75%] overflow-hidden rounded-lg bg-slate-200 dark:bg-slate-700">
+          <div className="relative w-full pt-[75%] overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
             <img
               src={breed.image}
               alt={breed.name}
-              className="object-cover absolute inset-0 transition-transform duration-300 h-full w-full"
+              className="object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-110 h-full w-full"
               onError={(e) => {
                 e.currentTarget.src =
                   breed.imageAlt || "/placeholder.svg?height=600&width=800";
               }}
             />
+            <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+              <span className="text-white/80 text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                {breed.origin}
+              </span>
+            </div>
           </div>
         </CardContent>
-        <CardFooter className="p-4 flex flex-col items-start">
-          <h3 className="font-xl text-lg text-slate-900 dark:text-slate-100">
+        <CardFooter className="p-4 flex flex-col items-start gap-1">
+          <h3 className="font-outfit text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300">
             {breed.name}
           </h3>
-          <p className="text-medium text-slate-600 dark:text-slate-400">
-            {breed.origin}
+          <p className="text-sm text-muted-foreground line-clamp-1">
+            {breed.temperament?.slice(0, 2).join(" • ") || "Discover more"}
           </p>
         </CardFooter>
       </Card>
