@@ -143,20 +143,6 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
           </div>
         )}
 
-        {!breed && !isLoading && (
-          <div className="max-w-4xl mx-auto text-center py-12">
-            <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 p-6 rounded-lg">
-              <p className="text-xl">Details not found!</p>
-              <Button
-                variant="outline"
-                onClick={onReturn}
-                className="mt-4 border-red-700 text-red-700 dark:border-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900/50"
-              >
-                Return to homepage
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
 
       <ImageModal

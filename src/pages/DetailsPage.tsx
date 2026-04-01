@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 import BreedDetails from "@/components/BreedDetails";
+import NotFound from "@/components/NotFound";
 import { useSpecies } from "@/hooks/UseSpecies";
 import type { NormalizedBreed, Sections } from "@/lib/api";
 
@@ -26,25 +27,29 @@ const DetailsPage = () => {
 
   useEffect(() => {
     if (breedId && breeds.length > 0) {
-      const getBreedDetails = (breedId: string) => {
-        const breedDetails = breeds.find((item) => item.id === breedId);
-        setBreed(breedDetails || null);
-      };
-
-      getBreedDetails(breedId);
+      const breedDetails = breeds.find((item) => item.id === breedId);
+      setBreed(breedDetails || null);
     }
   }, [breedId, breeds]);
 
-  if (!section || !breedId) return <Navigate to="/cats" replace />;
+  if (!section || !breedId) {
+    return <NotFound message="Invalid breed URL." />;
+  }
+
+  if (!isLoading && !breed) {
+    return (
+      <NotFound
+        message="We couldn't find the breed you're looking for."
+      />
+    );
+  }
 
   return (
-    <>
-      <BreedDetails
-        isLoading={isLoading}
-        onReturn={handleReturn}
-        breed={breed}
-      />
-    </>
+    <BreedDetails
+      isLoading={isLoading}
+      onReturn={handleReturn}
+      breed={breed}
+    />
   );
 };
 
