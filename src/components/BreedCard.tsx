@@ -16,13 +16,11 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
 
   const isCattle = isCattleBreed(breed);
 
-  const fallbackText = isCattle
-    ? "Descubre más"
-    : "Descubre más";
+  const fallbackText = isCattle ? "Descubre más" : "Descubre más";
 
   const temperamentPreview = isCattle
     ? breed.productiveUsages?.slice(0, 2).join(" • ")
-    : (breed as any).temperament?.slice(0, 2).join(" • ");
+    : breed.temperament?.slice(0, 2).join(" • ");
 
   return (
     <div className="h-full group perspective-1000">
@@ -38,8 +36,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
               alt={breed.name}
               className="object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-110 h-full w-full"
               onError={(e) => {
-                e.currentTarget.src =
-                  "/placeholder.svg?height=600&width=800";
+                e.currentTarget.src = "/placeholder.svg?height=600&width=800";
               }}
             />
             <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
@@ -49,11 +46,11 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="p-4 flex flex-col items-start gap-1">
+        <CardFooter className="p-4 flex flex-col items-start gap-1 capitalize">
           <h3 className="font-outfit text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300">
             {breed.name}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-1">
+          <p className="text-sm text-muted-foreground capitalize line-clamp-1">
             {temperamentPreview || fallbackText}
           </p>
         </CardFooter>
