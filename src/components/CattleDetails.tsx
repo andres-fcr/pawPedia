@@ -64,7 +64,7 @@ const CattleDetails = ({ breed, onZoomImage }: CattleDetailsProps) => {
             </span>
           </div>
           <p className="text-xl font-outfit font-semibold text-foreground">
-            {breed.productiveCharacteristics.weight.male}
+            {breed.productiveCharacteristics.weight.male + ' Kg'}
           </p>
         </div>
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 rounded-xl p-5 border border-amber-500/20 shadow-sm hover:shadow-md hover:border-amber-500/30 transition-all duration-300">
@@ -77,7 +77,7 @@ const CattleDetails = ({ breed, onZoomImage }: CattleDetailsProps) => {
             </span>
           </div>
           <p className="text-xl font-outfit font-semibold text-foreground">
-            {breed.productiveCharacteristics.weight.female}
+            {breed.productiveCharacteristics.weight.female + ' Kg'}
           </p>
         </div>
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 rounded-xl p-5 border border-amber-500/20 shadow-sm hover:shadow-md hover:border-amber-500/30 transition-all duration-300">
