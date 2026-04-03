@@ -9,7 +9,7 @@ const Header = () => {
           <div className="relative group">
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/40 transition-all duration-300" />
             <div className="relative flex items-center justify-center bg-gradient-to-br from-primary to-amber-500 border-2 border-primary/20 rounded-full size-12 lg:size-16 overflow-hidden">
-              <img src="/images/logo.webp" alt="logo" className="h-3/4 w-auto" />
+              <img src="/images/logo.webp" alt="logotipo" className="h-3/4 w-auto" />
             </div>
           </div>
           <h1 className="text-2xl font-outfit font-bold tracking-tight lg:text-3xl">

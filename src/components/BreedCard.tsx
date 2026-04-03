@@ -43,7 +43,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
             {breed.name}
           </h3>
           <p className="text-sm text-muted-foreground line-clamp-1">
-            {breed.temperament?.slice(0, 2).join(" • ") || "Discover more"}
+            {breed.temperament?.slice(0, 2).join(" • ") || "Descubre más"}
           </p>
         </CardFooter>
       </Card>

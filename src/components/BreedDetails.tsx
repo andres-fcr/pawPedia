@@ -26,7 +26,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
             className="mb-6 text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-300 rounded-lg"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
+            Volver
           </Button>
         )}
 
@@ -75,7 +75,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
                 <button
                   onClick={() => setIsZoomOpen(true)}
                   className="absolute top-4 right-4 p-3 bg-black/30 backdrop-blur-sm rounded-full text-white/70 hover:text-white hover:bg-black/50 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                  aria-label="Zoom image"
+                  aria-label="Ampliar imagen"
                 >
                   <ZoomIn className="w-5 h-5" />
                 </button>
@@ -88,7 +88,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <Scale className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm text-muted-foreground">Weight</span>
+                  <span className="text-sm text-muted-foreground">Peso</span>
                 </div>
                 <p className="text-xl font-outfit font-semibold text-foreground">{breed.weight} kg</p>
               </div>
@@ -97,18 +97,18 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <Ruler className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm text-muted-foreground">Height</span>
+                  <span className="text-sm text-muted-foreground">Altura</span>
                 </div>
-                <p className="text-xl font-outfit font-semibold text-foreground">{breed.height ? `${breed.height} cm` : "N/A"}</p>
+                <p className="text-xl font-outfit font-semibold text-foreground">{breed.height ? `${breed.height} cm` : "N/D"}</p>
               </div>
               <div className="bg-card rounded-xl p-5 border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-primary/10 rounded-lg">
                     <CalendarDays className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm text-muted-foreground">Life Span</span>
+                  <span className="text-sm text-muted-foreground">Esperanza de vida</span>
                 </div>
-                <p className="text-xl font-outfit font-semibold text-foreground">{breed.lifeSpan} years</p>
+                <p className="text-xl font-outfit font-semibold text-foreground">{breed.lifeSpan} años</p>
               </div>
             </div>
 
@@ -116,7 +116,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
               <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
                 <h2 className="text-xl font-outfit font-semibold mb-3 text-foreground flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-primary" />
-                  About
+                  Acerca de
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
                   {breed.description}
@@ -125,7 +125,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
 
               <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
                 <h2 className="text-xl font-outfit font-semibold mb-4 text-foreground">
-                  Temperament
+                  Temperamento
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {breed.temperament?.map((trait, index) => (
@@ -148,7 +148,7 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
         isOpen={isZoomOpen}
         onOpenChange={() => setIsZoomOpen(false)}
         imageUrl={breed?.image || "/placeholder.svg?height=600&width=800"}
-        altText={breed?.name || "Breed image"}
+        altText={breed?.name || "Imagen de la raza"}
       />
     </>
   );

@@ -45,13 +45,13 @@ const HomePage = () => {
   };
 
   const filteredBreeds = breeds.filter((breed) =>
-    breed.name.toLowerCase().includes(searchQuery.toLowerCase())
+    breed.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const totalPages = Math.ceil(filteredBreeds.length / itemsPerPage);
   const paginatedBreeds = filteredBreeds.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const handleBreedClick = (breedId: string) => {
@@ -73,16 +73,19 @@ const HomePage = () => {
                 <Dog className="w-5 h-5 text-primary" />
               )}
               <span className="text-muted-foreground font-outfit text-sm tracking-wide uppercase">
-                Explore {section === "cats" ? "Feline" : "Canine"} Breeds
+                Explora las razas {section === "cats" ? "felinas" : "caninas"}
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-outfit font-bold text-foreground">
-              Discover the Perfect <span className="text-primary">Companion</span>
+              Descubre al Compañero{" "}
+              <span className="text-primary">Perfecto</span>
             </h2>
           </div>
           <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
-            <span className="text-primary font-outfit font-bold">{breeds.length}</span>
-            <span className="text-muted-foreground text-sm">breeds</span>
+            <span className="text-primary font-outfit font-bold">
+              {breeds.length}
+            </span>
+            <span className="text-muted-foreground text-sm">razas</span>
           </div>
         </div>
         <div className="absolute -right-4 -top-4 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-float" />
@@ -99,10 +102,7 @@ const HomePage = () => {
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="rounded-xl overflow-hidden bg-card"
-              >
+              <div key={index} className="rounded-xl overflow-hidden bg-card">
                 <Skeleton className="h-48 w-full" />
                 <div className="p-4">
                   <Skeleton className="h-6 w-3/4" />
@@ -126,7 +126,7 @@ const HomePage = () => {
         )}
         {!isLoading && filteredBreeds.length === 0 && (
           <p className="text-center text-muted-foreground">
-            No breeds found for this section.
+            No se encontraron razas en esta sección.
           </p>
         )}
       </section>

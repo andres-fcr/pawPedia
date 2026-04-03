@@ -20,14 +20,14 @@ const TabsSection = ({ section, handleTabChange }: Props) => {
           className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md rounded-lg transition-all duration-300"
         >
           <Cat className="w-4 h-4" />
-          <span className="font-outfit font-medium">Cats</span>
+          <span className="font-outfit font-medium">Gatos</span>
         </TabsTrigger>
         <TabsTrigger
           value="dogs"
           className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md rounded-lg transition-all duration-300"
         >
           <Dog className="w-4 h-4" />
-          <span className="font-outfit font-medium">Dogs</span>
+          <span className="font-outfit font-medium">Perros</span>
         </TabsTrigger>
       </TabsList>
     </Tabs>

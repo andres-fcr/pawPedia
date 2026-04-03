@@ -33,13 +33,13 @@ const DetailsPage = () => {
   }, [breedId, breeds]);
 
   if (!section || !breedId) {
-    return <NotFound message="Invalid breed URL." />;
+    return <NotFound message="URL de raza no válida." />;
   }
 
   if (!isLoading && !breed) {
     return (
       <NotFound
-        message="We couldn't find the breed you're looking for."
+        message="No pudimos encontrar la raza que buscas."
       />
     );
   }

@@ -96,7 +96,7 @@ export const fetchData = async (
         weight: breed.weight.metric,
         height: breed.height.metric,
         temperament: breed.temperament ? breed.temperament.split(", ") : [],
-        bredFor: breed.bred_for || "Unknown",
+        bredFor: breed.bred_for || "Desconocido",
         image: `https://cdn2.thedogapi.com/images/${breed.reference_image_id}.jpg`,
         imageAlt: `https://cdn2.thedogapi.com/images/${breed.reference_image_id}.png`,
         externalLinks: breed.external_links || [],
@@ -105,7 +105,7 @@ export const fetchData = async (
 
     return [];
   } catch (e) {
-    console.error("Failed to fetch data", e);
+    console.error("Error al obtener los datos", e);
     return [];
   }
 };

@@ -9,7 +9,7 @@ interface NotFoundProps {
 }
 
 const NotFound = ({
-  message = "The page you're looking for doesn't exist.",
+  message = "La página que buscas no existe.",
   showHomeButton = true,
 }: NotFoundProps) => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const NotFound = ({
         </h1>
 
         <h2 className="text-xl font-medium text-amber-600 dark:text-amber-400 mb-3">
-          Page Not Found
+          Página No Encontrada
         </h2>
 
         <p className="text-slate-600 dark:text-slate-400 mb-8">
@@ -42,7 +42,7 @@ const NotFound = ({
             onClick={() => navigate("/cats")}
             className="bg-amber-500 hover:bg-amber-600 text-white dark:bg-amber-600 dark:hover:bg-amber-700"
           >
-            Back to Home
+            Volver al Inicio
           </Button>
         )}
       </div>
