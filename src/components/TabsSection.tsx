@@ -1,9 +1,9 @@
-import type { Sections } from "@/lib/api";
+import type { UrlSections } from "@/lib/api";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
-import { Cat, Dog } from "lucide-react";
+import { Cat, Dog, Beef } from "lucide-react";
 
 interface Props {
-  section: Sections;
+  section: UrlSections;
   handleTabChange: (value: string) => void;
 }
 
@@ -28,6 +28,13 @@ const TabsSection = ({ section, handleTabChange }: Props) => {
         >
           <Dog className="w-4 h-4" />
           <span className="font-outfit font-medium">Perros</span>
+        </TabsTrigger>
+        <TabsTrigger
+          value="vacunos"
+          className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md rounded-lg transition-all duration-300"
+        >
+          <Beef className="w-4 h-4" />
+          <span className="font-outfit font-medium">Vacunos</span>
         </TabsTrigger>
       </TabsList>
     </Tabs>

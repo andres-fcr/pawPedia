@@ -4,18 +4,18 @@ import { useLocation, useNavigate, useParams } from "react-router";
 import BreedDetails from "@/components/BreedDetails";
 import NotFound from "@/components/NotFound";
 import { useSpecies } from "@/hooks/UseSpecies";
-import type { NormalizedBreed, Sections } from "@/lib/api";
+import type { BreedData, UrlSections } from "@/lib/api";
 
 const DetailsPage = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { id: breedId } = useParams();
 
-  const section = pathname.split("/")[1] as Sections;
+  const section = pathname.split("/")[1] as UrlSections;
 
   const { data: breeds, isLoading } = useSpecies(section);
 
-  const [breed, setBreed] = useState<NormalizedBreed | null>(null);
+  const [breed, setBreed] = useState<BreedData | null>(null);
 
   const handleReturn = () => {
     if (window.history.length > 1) {

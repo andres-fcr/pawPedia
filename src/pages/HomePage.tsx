@@ -1,13 +1,13 @@
 import { useLocation, useNavigate } from "react-router";
 
-import { type Sections } from "@/lib/api";
+import { type UrlSections } from "@/lib/api";
 import { Skeleton } from "@/components/ui/skeleton";
 import BreedCard from "@/components/BreedCard";
 import { Pagination } from "@/components/ui/pagination";
 import { useSpecies } from "@/hooks/UseSpecies";
 import TabsSection from "@/components/TabsSection";
 import SearchBar from "@/components/SearchBar";
-import { Cat, Dog } from "lucide-react";
+import { Cat, Dog, Beef } from "lucide-react";
 
 const itemsPerPage = 12;
 
@@ -15,7 +15,7 @@ const HomePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const section = location.pathname.split("/")[1] as Sections;
+  const section = location.pathname.split("/")[1] as UrlSections;
 
   const currentPage =
     Number(new URLSearchParams(location.search).get("page")) || 1;
@@ -69,11 +69,17 @@ const HomePage = () => {
             <div className="flex items-center gap-2 mb-1">
               {section === "cats" ? (
                 <Cat className="w-5 h-5 text-primary" />
-              ) : (
+              ) : section === "dogs" ? (
                 <Dog className="w-5 h-5 text-primary" />
+              ) : (
+                <Beef className="w-5 h-5 text-primary" />
               )}
               <span className="text-muted-foreground font-outfit text-sm tracking-wide uppercase">
-                Explora las razas {section === "cats" ? "felinas" : "caninas"}
+                {section === "cats"
+                  ? "Explora las razas felinas"
+                  : section === "dogs"
+                  ? "Explora las razas caninas"
+                  : "Explora las razas bovinas"}
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-outfit font-bold text-foreground">

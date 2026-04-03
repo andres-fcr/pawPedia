@@ -1,26 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 
-import { fetchData, type NormalizedBreed, type Sections } from "@/lib/api";
+import { fetchData, urlToApiSection, type BreedData, type UrlSections } from "@/lib/api";
 import { getLocalStorageItem, setLocalStorageItem } from "@/lib/utils";
 
-export const useSpecies = (section: Sections) => {
+export const useSpecies = (section: UrlSections) => {
   const firstLoad = useRef(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<NormalizedBreed[]>([]);
+  const [data, setData] = useState<BreedData[]>([]);
 
   useEffect(() => {
-    const localData: NormalizedBreed[] | null = getLocalStorageItem(section);
+    const apiSection = urlToApiSection[section];
+    const localData: BreedData[] | null = getLocalStorageItem(apiSection);
 
     if (localData?.length && !firstLoad.current) {
       setData(localData);
       return;
     }
 
-    const fetchSectionData = async (section: Sections) => {
+    const fetchSectionData = async (section: UrlSections) => {
       try {
         setIsLoading(true);
-        const data = await fetchData(section);
-        setLocalStorageItem(section, data);
+        const apiSection = urlToApiSection[section];
+        const data = await fetchData(apiSection);
+        setLocalStorageItem(apiSection, data);
         setData(data);
       } finally {
         setIsLoading(false);

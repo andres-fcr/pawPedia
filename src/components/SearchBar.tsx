@@ -1,11 +1,11 @@
 import { type ChangeEvent } from "react";
 
-import type { Sections } from "@/lib/api";
+import type { UrlSections } from "@/lib/api";
 import { Search, X } from "lucide-react";
 import { Input } from "./ui/input";
 
 interface Props {
-  section: Sections;
+  section: UrlSections;
   searchQuery?: string;
   handleSearchChange: (value: string) => void;
   disabled?: boolean;
@@ -28,7 +28,7 @@ const SearchBar = ({
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors duration-300 z-10" />
         <Input
           type="text"
-          placeholder={`Buscar razas de ${section}...`}
+          placeholder={section === "vacunos" ? "Buscar razas de vacunos..." : `Buscar razas de ${section}...`}
           value={searchQuery}
           onChange={onSearch}
           className="relative pl-12 pr-12 bg-card border-border text-foreground placeholder:text-muted-foreground rounded-xl h-14 text-lg focus-visible:ring-primary/50 transition-all duration-300 shadow-sm"

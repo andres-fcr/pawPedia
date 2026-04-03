@@ -1,17 +1,28 @@
 "use client";
 
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import type { NormalizedBreed } from "@/lib/api";
+import type { BreedData } from "@/lib/api";
+import { isCattleBreed } from "@/lib/api";
 
 interface BreedCardProps {
-  breed: NormalizedBreed;
-  onClick: (id: NormalizedBreed["id"]) => void;
+  breed: BreedData;
+  onClick: (id: string) => void;
 }
 
 export default function BreedCard({ breed, onClick }: BreedCardProps) {
   const handleClick = () => {
     onClick(breed.id);
   };
+
+  const isCattle = isCattleBreed(breed);
+
+  const fallbackText = isCattle
+    ? "Descubre más"
+    : "Descubre más";
+
+  const temperamentPreview = isCattle
+    ? breed.productiveUsages?.slice(0, 2).join(" • ")
+    : (breed as any).temperament?.slice(0, 2).join(" • ");
 
   return (
     <div className="h-full group perspective-1000">
@@ -28,7 +39,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
               className="object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-110 h-full w-full"
               onError={(e) => {
                 e.currentTarget.src =
-                  breed.imageAlt || "/placeholder.svg?height=600&width=800";
+                  "/placeholder.svg?height=600&width=800";
               }}
             />
             <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
@@ -43,7 +54,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
             {breed.name}
           </h3>
           <p className="text-sm text-muted-foreground line-clamp-1">
-            {breed.temperament?.slice(0, 2).join(" • ") || "Descubre más"}
+            {temperamentPreview || fallbackText}
           </p>
         </CardFooter>
       </Card>
