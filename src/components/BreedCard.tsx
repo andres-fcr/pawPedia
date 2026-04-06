@@ -1,6 +1,8 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import type { BreedData } from "@/lib/api";
 import { isCattleBreed, isHorseBreed } from "@/lib/api";
+import ImageWithFallback from "@/components/ImageWithFallback";
+import { ImageIcon } from "lucide-react";
 
 interface BreedCardProps {
   breed: BreedData;
@@ -37,13 +39,12 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
         <CardContent className="p-0">
           <div className="relative w-full pt-[75%] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-            <img
+            <ImageWithFallback
               src={breed.image}
               alt={breed.name}
               className="object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-110 h-full w-full"
-              onError={(e) => {
-                e.currentTarget.src = "/placeholder.svg?height=600&width=800";
-              }}
+              fallbackIcon={<ImageIcon className="w-12 h-12 opacity-40" />}
+              fallbackClassName="absolute inset-0"
             />
             <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               <span className="text-white text-sm font-medium bg-primary/80 px-3 py-1 rounded-full">

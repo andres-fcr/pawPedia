@@ -7,12 +7,15 @@ import {
   CalendarDays,
   Target,
   Map,
-  ZoomIn,
   Link,
 } from "lucide-react";
 
 import { Badge } from "./ui/badge";
 import type { NormalizedHorseBreed } from "@/lib/api";
+import HeroImage from "@/components/HeroImage";
+import StatCard from "@/components/StatCard";
+import SectionCard from "@/components/SectionCard";
+import DetailRow from "@/components/DetailRow";
 
 interface HorseDetailsProps {
   breed: NormalizedHorseBreed;
@@ -22,78 +25,31 @@ interface HorseDetailsProps {
 const HorseDetails = ({ breed, onZoomImage }: HorseDetailsProps) => {
   return (
     <>
-      <div className="relative rounded-2xl overflow-hidden mb-8 group border-2 border-border">
-        <div className="relative aspect-[3/4] sm:aspect-[4/3] md:aspect-[2/1] w-full">
-          <img
-            src={breed.image}
-            alt={breed.name}
-            className="object-cover h-full w-full transition-transform duration-700 group-hover:scale-105"
-            onError={(e) => {
-              e.currentTarget.src = "/placeholder.svg?height=600&width=800";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-            <div className="flex items-center gap-3 mb-3">
-              <MapPin className="h-6 w-6 text-primary animate-float" />
-              <span className="text-white/80 font-outfit text-sm tracking-wide uppercase">
-                {breed.countryOfOrigin}
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-bold text-white">
-              {breed.name}
-            </h1>
-          </div>
-          <button
-            onClick={onZoomImage}
-            className="absolute top-4 right-4 p-3 bg-primary/80 rounded-full text-white hover:bg-primary transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 shadow-lg"
-            aria-label="Ampliar imagen"
-          >
-            <ZoomIn className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
+      <HeroImage
+        src={breed.image}
+        alt={breed.name}
+        origin={breed.countryOfOrigin}
+        onZoomImage={onZoomImage}
+        originIcon={<MapPin className="h-6 w-6 text-primary animate-float" />}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className="bg-card rounded-2xl p-5 border-2 border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-primary/10 rounded-xl">
-              <Scale className="w-5 h-5 text-primary" />
-            </div>
-            <span className="text-xs text-muted-foreground uppercase tracking-wide">
-              Peso aproximado
-            </span>
-          </div>
-          <p className="text-xl font-outfit font-semibold text-foreground">
-            {breed.approximateWeight}
-          </p>
-        </div>
-        <div className="bg-card rounded-2xl p-5 border-2 border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-accent/10 rounded-xl">
-              <Ruler className="w-5 h-5 text-accent" />
-            </div>
-            <span className="text-xs text-muted-foreground uppercase tracking-wide">
-              Tamaño
-            </span>
-          </div>
-          <p className="text-xl font-outfit font-semibold text-foreground">
-            {breed.size}
-          </p>
-        </div>
-        <div className="bg-card rounded-2xl p-5 border-2 border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-primary/10 rounded-xl">
-              <CalendarDays className="w-5 h-5 text-primary" />
-            </div>
-            <span className="text-xs text-muted-foreground uppercase tracking-wide">
-              Esperanza de vida
-            </span>
-          </div>
-          <p className="text-xl font-outfit font-semibold text-foreground">
-            {breed.lifespan}
-          </p>
-        </div>
+        <StatCard
+          icon={<Scale className="w-5 h-5" />}
+          label="Peso aproximado"
+          value={breed.approximateWeight}
+        />
+        <StatCard
+          icon={<Ruler className="w-5 h-5" />}
+          label="Tamaño"
+          value={breed.size}
+          accent="accent"
+        />
+        <StatCard
+          icon={<CalendarDays className="w-5 h-5" />}
+          label="Esperanza de vida"
+          value={breed.lifespan}
+        />
       </div>
 
       <div className="bg-secondary/50 rounded-2xl p-6 border-2 border-border mb-8">
@@ -104,10 +60,10 @@ const HorseDetails = ({ breed, onZoomImage }: HorseDetailsProps) => {
         <p className="leading-relaxed">{breed.description}</p>
 
         <span className="text-lg font-outfit font-semibold mb-3 mt-4 text-foreground flex items-center gap-2">
-          <Map className="w-4 h-4 text-primary" /> 
+          <Map className="w-4 h-4 text-primary" />
           Región en Colombia:
         </span>
-        <p className="font-medium ">{breed.colombiaRegion}</p>
+        <p className="font-medium">{breed.colombiaRegion}</p>
       </div>
 
       <div className="mb-8">
@@ -123,42 +79,19 @@ const HorseDetails = ({ breed, onZoomImage }: HorseDetailsProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-        <div className="bg-card rounded-2xl p-6 border-2 border-border shadow-sm">
-          <h2 className="text-xl font-outfit font-semibold mb-5 text-foreground flex items-center gap-2">
-            <Palette className="w-5 h-5 text-primary" />
-            Características físicas
-          </h2>
+        <SectionCard title="Características físicas" icon={<Palette className="w-5 h-5 text-primary" />}>
           <div className="space-y-0">
-            <div className="flex justify-between items-center py-3 border-b border-border/50">
-              <span className="text-muted-foreground text-sm">Colores</span>
-              <span className="font-outfit font-medium text-foreground text-sm text-right max-w-[60%]">
-                {breed.colors}
-              </span>
-            </div>
-            <div className="flex justify-between items-center py-3 border-b border-border/50">
-              <span className="text-muted-foreground text-sm">Orejas</span>
-              <span className="font-outfit font-medium text-foreground text-sm text-right max-w-[60%]">
-                {breed.ears}
-              </span>
-            </div>
-            <div className="flex justify-between items-center py-3">
-              <span className="text-muted-foreground text-sm">Crines</span>
-              <span className="font-outfit font-medium text-foreground text-sm text-right max-w-[60%]">
-                {breed.manes}
-              </span>
-            </div>
+            <DetailRow label="Colores" value={breed.colors} />
+            <DetailRow label="Orejas" value={breed.ears} />
+            <DetailRow label="Crines" value={breed.manes} showBorder={false} />
           </div>
-        </div>
+        </SectionCard>
 
-        <div className="bg-card rounded-2xl p-6 border-2 border-border shadow-sm">
-          <h2 className="text-xl font-outfit font-semibold mb-4 text-foreground flex items-center gap-2">
-            <Heart className="w-5 h-5 text-primary" />
-            Temperamento
-          </h2>
+        <SectionCard title="Temperamento" icon={<Heart className="w-5 h-5 text-primary" />}>
           <p className="text-muted-foreground leading-relaxed">
             {breed.temperament}
           </p>
-        </div>
+        </SectionCard>
       </div>
 
       {breed.links.length > 0 && (

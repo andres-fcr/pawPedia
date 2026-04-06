@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { DialogDescription } from "@radix-ui/react-dialog";
-import { ZoomIn, ZoomOut, Maximize2, X } from "lucide-react";
+import { ZoomIn, ZoomOut, Maximize2, X, ImageIcon } from "lucide-react";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -226,7 +226,13 @@ export default function ImageModal({
                 className="object-contain max-w-full max-h-full select-none"
                 draggable={false}
                 onLoad={() => setImageLoaded(true)}
+                onError={() => setImageLoaded(true)}
               />
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-secondary/50">
+                  <ImageIcon className="w-20 h-20 text-muted-foreground opacity-30" />
+                </div>
+              )}
             </div>
           </div>
 
