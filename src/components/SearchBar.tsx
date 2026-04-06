@@ -28,7 +28,7 @@ const SearchBar = ({
         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground group-focus-within:text-primary transition-colors duration-300 z-10" />
         <Input
           type="text"
-          placeholder={section === "vacunos" ? "Buscar razas de vacunos..." : `Buscar razas de ${section}...`}
+          placeholder={section === "vacunos" ? "Buscar razas de vacunos..." : section === "caballos" ? "Buscar razas de caballos..." : `Buscar razas de ${section}...`}
           value={searchQuery}
           onChange={onSearch}
           className="relative pl-12 pr-12 bg-card border-border text-foreground placeholder:text-muted-foreground rounded-xl h-14 text-lg focus-visible:ring-primary/50 transition-all duration-300 shadow-sm"

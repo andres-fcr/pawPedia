@@ -29,6 +29,11 @@ function App() {
             <Route path=":id" element={<DetailsPage />} />
           </Route>
 
+          <Route path="/caballos" element={<MainLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path=":id" element={<DetailsPage />} />
+          </Route>
+
           <Route
             path="*"
             element={

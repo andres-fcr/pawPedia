@@ -1,8 +1,6 @@
-"use client";
-
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import type { BreedData } from "@/lib/api";
-import { isCattleBreed } from "@/lib/api";
+import { isCattleBreed, isHorseBreed } from "@/lib/api";
 
 interface BreedCardProps {
   breed: BreedData;
@@ -15,12 +13,20 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
   };
 
   const isCattle = isCattleBreed(breed);
+  const isHorse = isHorseBreed(breed);
 
-  const fallbackText = isCattle ? "Descubre más" : "Descubre más";
+  const fallbackText = "Descubre más";
 
-  const temperamentPreview = isCattle
-    ? breed.productiveUsages?.slice(0, 2).join(" • ")
-    : breed.temperament?.slice(0, 2).join(" • ");
+  let temperamentPreview: string = fallbackText;
+  if (isCattle) {
+    temperamentPreview = breed.productiveUsages?.slice(0, 2).join(" • ");
+  } else if (isHorse) {
+    temperamentPreview = breed.temperament;
+  } else {
+    temperamentPreview = breed.temperament?.slice(0, 2).join(" • ") || fallbackText;
+  }
+
+  const origin = isHorse ? breed.countryOfOrigin : breed.origin;
 
   return (
     <div className="h-full group perspective-1000">
@@ -41,7 +47,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
             />
             <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
               <span className="text-white/80 text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
-                {breed.origin}
+                {origin}
               </span>
             </div>
           </div>

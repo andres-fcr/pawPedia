@@ -71,6 +71,8 @@ const HomePage = () => {
                 <Cat className="w-5 h-5 text-primary" />
               ) : section === "dogs" ? (
                 <Dog className="w-5 h-5 text-primary" />
+              ) : section === "caballos" ? (
+                <Dog className="w-5 h-5 text-primary" />
               ) : (
                 <Beef className="w-5 h-5 text-primary" />
               )}
@@ -79,11 +81,13 @@ const HomePage = () => {
                   ? "Explora las razas felinas"
                   : section === "dogs"
                   ? "Explora las razas caninas"
+                  : section === "caballos"
+                  ? "Explora las razas equinas"
                   : "Explora las razas bovinas"}
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-outfit font-bold text-foreground">
-              Descubre al Compañero{" "}
+              Descubre al Compañío{" "}
               <span className="text-primary">Perfecto</span>
             </h2>
           </div>

@@ -103,20 +103,60 @@ export interface NormalizedCattleBreed {
   productiveCharacteristics: ProductiveCharacteristics;
 }
 
-export type BreedData = NormalizedBreed | NormalizedCattleBreed;
+export interface HorseBreed {
+  name: string;
+  image: string;
+  ears: string;
+  colors: string;
+  temperament: string;
+  size: string;
+  approximate_weight: string;
+  lifespan: string;
+  manes: string;
+  aptitude: string;
+  colombia_region: string;
+  country_of_origin: string;
+  description: string;
+  links: string[];
+}
+
+export interface NormalizedHorseBreed {
+  id: string;
+  name: string;
+  image: string;
+  ears: string;
+  colors: string;
+  temperament: string;
+  size: string;
+  approximateWeight: string;
+  lifespan: string;
+  manes: string;
+  aptitude: string;
+  colombiaRegion: string;
+  countryOfOrigin: string;
+  description: string;
+  links: string[];
+}
+
+export type BreedData = NormalizedBreed | NormalizedCattleBreed | NormalizedHorseBreed;
 
 export const isCattleBreed = (breed: BreedData): breed is NormalizedCattleBreed => {
   return "productiveUsages" in breed;
 };
 
-export type Sections = "cats" | "dogs" | "cattle";
+export const isHorseBreed = (breed: BreedData): breed is NormalizedHorseBreed => {
+  return "aptitude" in breed;
+};
 
-export type UrlSections = "cats" | "dogs" | "vacunos";
+export type Sections = "cats" | "dogs" | "cattle" | "horses";
+
+export type UrlSections = "cats" | "dogs" | "vacunos" | "caballos";
 
 export const urlToApiSection: Record<UrlSections, Sections> = {
   cats: "cats",
   dogs: "dogs",
   vacunos: "cattle",
+  caballos: "horses",
 };
 
 export const fetchData = async (
@@ -175,6 +215,26 @@ export const fetchData = async (
         image: breed.image_url,
         productiveUsages: breed.productive_usages,
         productiveCharacteristics: breed.productive_characteristics,
+      }));
+    }
+
+    if (section === "horses") {
+      return data.map((breed: HorseBreed) => ({
+        id: breed.name.toLowerCase().replace(/\s+/g, "-"),
+        name: breed.name,
+        image: breed.image,
+        ears: breed.ears,
+        colors: breed.colors,
+        temperament: breed.temperament,
+        size: breed.size,
+        approximateWeight: breed.approximate_weight,
+        lifespan: breed.lifespan,
+        manes: breed.manes,
+        aptitude: breed.aptitude,
+        colombiaRegion: breed.colombia_region,
+        countryOfOrigin: breed.country_of_origin,
+        description: breed.description,
+        links: breed.links,
       }));
     }
 

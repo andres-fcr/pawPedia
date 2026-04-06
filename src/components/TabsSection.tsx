@@ -36,6 +36,13 @@ const TabsSection = ({ section, handleTabChange }: Props) => {
           <Beef className="w-4 h-4" />
           <span className="font-outfit font-medium">Vacunos</span>
         </TabsTrigger>
+        <TabsTrigger
+          value="caballos"
+          className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md rounded-lg transition-all duration-300"
+        >
+          <Dog className="w-4 h-4" />
+          <span className="font-outfit font-medium">Caballos</span>
+        </TabsTrigger>
       </TabsList>
     </Tabs>
   );

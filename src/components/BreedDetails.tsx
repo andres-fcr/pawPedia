@@ -3,11 +3,12 @@ import { ArrowLeft } from "lucide-react";
 
 import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
-import type { BreedData, NormalizedBreed, NormalizedCattleBreed } from "@/lib/api";
-import { isCattleBreed } from "@/lib/api";
+import type { BreedData, NormalizedBreed, NormalizedCattleBreed, NormalizedHorseBreed } from "@/lib/api";
+import { isCattleBreed, isHorseBreed } from "@/lib/api";
 import ImageModal from "./ImageModal";
 import PetDetails from "./PetDetails";
 import CattleDetails from "./CattleDetails";
+import HorseDetails from "./HorseDetails";
 
 interface BreedDetailsProps {
   breed: BreedData | null;
@@ -19,7 +20,8 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
   const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   const cattle = breed && isCattleBreed(breed) ? breed as NormalizedCattleBreed : null;
-  const pet = breed && !isCattleBreed(breed) ? breed as NormalizedBreed : null;
+  const horse = breed && isHorseBreed(breed) ? breed as NormalizedHorseBreed : null;
+  const pet = breed && !isCattleBreed(breed) && !isHorseBreed(breed) ? breed as NormalizedBreed : null;
 
   return (
     <>
@@ -55,6 +57,8 @@ const BreedDetails = ({ breed, isLoading, onReturn }: BreedDetailsProps) => {
           <div className="max-w-5xl mx-auto details-card capitalize">
             {cattle ? (
               <CattleDetails breed={cattle} onZoomImage={() => setIsZoomOpen(true)} />
+            ) : horse ? (
+              <HorseDetails breed={horse} onZoomImage={() => setIsZoomOpen(true)} />
             ) : pet ? (
               <PetDetails breed={pet} onZoomImage={() => setIsZoomOpen(true)} />
             ) : null}
