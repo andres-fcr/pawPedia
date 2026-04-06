@@ -19,28 +19,28 @@ const NotFound = ({
       <div className="max-w-md mx-auto text-center">
         <div className="mb-6 flex justify-center">
           <div className="relative">
-            <PawPrint className="h-20 w-20 text-amber-300 dark:text-amber-500" />
-            <PawPrint className="h-10 w-10 text-amber-400 dark:text-amber-400 absolute -top-2 -right-4 rotate-12 opacity-60" />
-            <PawPrint className="h-8 w-8 text-amber-200 dark:text-amber-600 absolute -bottom-1 -left-3 -rotate-12 opacity-60" />
+            <PawPrint className="h-20 w-20 text-primary" />
+            <PawPrint className="h-10 w-10 text-primary/60 absolute -top-2 -right-4 rotate-12 opacity-60" />
+            <PawPrint className="h-8 w-8 text-accent/60 absolute -bottom-1 -left-3 -rotate-12 opacity-60" />
           </div>
         </div>
 
-        <h1 className="text-6xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+        <h1 className="text-6xl font-bold text-foreground mb-2">
           404
         </h1>
 
-        <h2 className="text-xl font-medium text-amber-600 dark:text-amber-400 mb-3">
+        <h2 className="text-xl font-medium text-primary mb-3">
           Página No Encontrada
         </h2>
 
-        <p className="text-slate-600 dark:text-slate-400 mb-8">
+        <p className="text-muted-foreground mb-8">
           {message}
         </p>
 
         {showHomeButton && (
           <Button
             onClick={() => navigate("/cats")}
-            className="bg-amber-500 hover:bg-amber-600 text-white dark:bg-amber-600 dark:hover:bg-amber-700"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             Volver al Inicio
           </Button>

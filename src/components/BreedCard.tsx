@@ -31,12 +31,12 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
   return (
     <div className="h-full group perspective-1000">
       <Card
-        className="h-full p-0 cursor-pointer overflow-hidden bg-card border-border hover:border-primary/30 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:shadow-primary/10"
+        className="h-full p-0 cursor-pointer overflow-hidden bg-card border-2 border-border hover:border-primary/40 transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:shadow-primary/15 rounded-2xl"
         onClick={handleClick}
       >
         <CardContent className="p-0">
           <div className="relative w-full pt-[75%] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
             <img
               src={breed.image}
               alt={breed.name}
@@ -46,7 +46,7 @@ export default function BreedCard({ breed, onClick }: BreedCardProps) {
               }}
             />
             <div className="absolute bottom-3 left-3 z-20 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-              <span className="text-white/80 text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+              <span className="text-white text-sm font-medium bg-primary/80 px-3 py-1 rounded-full">
                 {origin}
               </span>
             </div>

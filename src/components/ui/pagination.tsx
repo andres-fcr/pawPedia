@@ -29,7 +29,7 @@ export function Pagination({
         size="icon"
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:bg-amber-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
+        className="bg-card border-border hover:bg-primary/10 hover:border-primary/30 text-foreground"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
@@ -40,11 +40,11 @@ export function Pagination({
             variant="outline"
             size="sm"
             onClick={() => onPageChange(1)}
-            className="bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:bg-amber-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
+            className="bg-card border-border hover:bg-primary/10 hover:border-primary/30 text-foreground"
           >
             1
           </Button>
-          <span className="text-slate-500">...</span>
+          <span className="text-muted-foreground">...</span>
         </>
       )}
 
@@ -56,8 +56,8 @@ export function Pagination({
           onClick={() => onPageChange(page)}
           className={
             currentPage === page
-              ? "bg-amber-500 hover:bg-amber-600 text-white dark:bg-amber-500 dark:hover:bg-amber-600 dark:text-white"
-              : "bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:bg-amber-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
+              ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+              : "bg-card border-border hover:bg-primary/10 hover:border-primary/30 text-foreground"
           }
         >
           {page}
@@ -66,12 +66,12 @@ export function Pagination({
 
       {currentPage < totalPages - 2 && totalPages > 5 && (
         <>
-          <span className="text-slate-500">...</span>
+          <span className="text-muted-foreground">...</span>
           <Button
             variant="outline"
             size="sm"
             onClick={() => onPageChange(totalPages)}
-            className="bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:bg-amber-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
+            className="bg-card border-border hover:bg-primary/10 hover:border-primary/30 text-foreground"
           >
             {totalPages}
           </Button>
@@ -83,7 +83,7 @@ export function Pagination({
         size="icon"
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="bg-white dark:bg-slate-800 border-amber-200 dark:border-slate-700 hover:bg-amber-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
+        className="bg-card border-border hover:bg-primary/10 hover:border-primary/30 text-foreground"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>

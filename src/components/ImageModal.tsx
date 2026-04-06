@@ -192,7 +192,7 @@ export default function ImageModal({
         <div className="relative w-full h-[80dvh] lg:h-[85dvh]">
           <button
             onClick={handleClose}
-            className="absolute top-3 right-3 z-50 p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/30 transition-colors shadow-lg"
+            className="absolute top-3 right-3 z-50 p-2 bg-primary rounded-full text-white hover:bg-primary/90 transition-colors shadow-lg"
             aria-label="Cerrar"
           >
             <X className="w-5 h-5" />
@@ -200,7 +200,7 @@ export default function ImageModal({
 
           <div
             ref={containerRef}
-            className="w-full h-full overflow-hidden rounded-lg"
+            className="w-full h-full overflow-hidden rounded-2xl"
             onWheel={handleWheel}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -231,27 +231,27 @@ export default function ImageModal({
           </div>
 
           {scale > 1 && imageLoaded && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-sm rounded-full px-3 py-2">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-primary/90 rounded-full px-3 py-2 shadow-lg">
               <button
                 onClick={zoomOut}
-                className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                className="p-1.5 text-white/90 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                 aria-label="Alejar"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-white/80 text-xs font-mono min-w-[3rem] text-center">
+              <span className="text-white/90 text-xs font-mono min-w-[3rem] text-center">
                 {Math.round(scale * 100)}%
               </span>
               <button
                 onClick={zoomIn}
-                className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                className="p-1.5 text-white/90 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                 aria-label="Acercar"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
                 onClick={reset}
-                className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors ml-1"
+                className="p-1.5 text-white/90 hover:text-white hover:bg-white/10 rounded-full transition-colors ml-1"
                 aria-label="Restablecer"
               >
                 <Maximize2 className="w-4 h-4" />

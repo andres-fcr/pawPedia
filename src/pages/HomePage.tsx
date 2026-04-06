@@ -62,8 +62,8 @@ const HomePage = () => {
     <>
       <TabsSection section={section} handleTabChange={handleTabChange} />
 
-      <section className="relative container mx-auto mb-8 overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 via-amber-50 to-primary/5 dark:from-primary/20 dark:via-primary/10 dark:to-amber-900/20 border border-border">
-        <div className="absolute inset-0 bg-pattern opacity-50 dark:opacity-30" />
+      <section className="relative container mx-auto mb-8 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 border-2 border-border">
+        <div className="absolute inset-0 bg-pattern opacity-30" />
         <div className="relative px-5 py-6 md:px-8 md:py-8 flex items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -91,14 +91,14 @@ const HomePage = () => {
               <span className="text-primary">Perfecto</span>
             </h2>
           </div>
-          <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+          <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
             <span className="text-primary font-outfit font-bold">
               {breeds.length}
             </span>
             <span className="text-muted-foreground text-sm">razas</span>
           </div>
         </div>
-        <div className="absolute -right-4 -top-4 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-float" />
+        <div className="absolute -right-4 -top-4 w-16 h-16 bg-primary/15 rounded-full animate-float" />
       </section>
 
       <SearchBar
@@ -112,7 +112,7 @@ const HomePage = () => {
         {isLoading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {Array.from({ length: 10 }).map((_, index) => (
-              <div key={index} className="rounded-xl overflow-hidden bg-card">
+              <div key={index} className="rounded-2xl overflow-hidden bg-card border-2 border-border">
                 <Skeleton className="h-48 w-full" />
                 <div className="p-4">
                   <Skeleton className="h-6 w-3/4" />
