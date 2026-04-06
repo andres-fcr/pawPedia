@@ -1,54 +1,84 @@
-# React + TypeScript + Vite
+# PawPedia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PawPedia is a pet encyclopedia web application that lets you explore different animal breeds. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Sections
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Gatos** (`/cats`) — Explore cat breeds
+- **Perros** (`/dogs`) — Explore dog breeds
+- **Vacunos** (`/vacunos`) — Explore cattle breeds
+- **Caballos** (`/caballos`) — Explore horse breeds
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Browse breeds by category with pagination
+- Search breeds by name
+- View detailed breed information including origin, temperament, physical characteristics, and more
+- Dark/light theme toggle
+- Responsive design
+- Image zoom modal
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Vite** for build tooling
+- **React Router** for routing
+- **Tailwind CSS** for styling
+- **shadcn/ui** for UI components
+- **Lucide React** for icons
+
+## Getting Started
+
+```bash
+# Install dependencies
+pnpm install
+
+# Copy environment variables
+cp .env.local.example .env.local
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## API
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application fetches data from JSON endpoints:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- `/cats.json` — Cat breeds
+- `/dogs.json` — Dog breeds
+- `/cattle.json` — Cattle breeds
+- `/horses.json` — Horse breeds
+
+Set the base URL in `.env.local`:
+
+```
+VITE_API_URL=your_api_base_url
+```
+
+## Project Structure
+
+```
+src/
+├── components/        # Reusable UI components
+│   ├── BreedCard.tsx
+│   ├── BreedDetails.tsx
+│   ├── CattleDetails.tsx
+│   ├── HorseDetails.tsx
+│   ├── PetDetails.tsx
+│   └── ...
+├── hooks/             # Custom React hooks
+├── layouts/           # Page layouts
+├── lib/               # API functions and utilities
+│   ├── api.ts
+│   └── utils.ts
+├── pages/             # Route pages
+│   ├── HomePage.tsx
+│   └── DetailsPage.tsx
+└── providers/         # Context providers
 ```
