@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router";
 import NotFound from "@/components/NotFound";
 import CompareView from "@/components/CompareView";
 import BreedSelector from "@/components/BreedSelector";
+import ImageModal from "@/components/ImageModal";
 import { useSpecies } from "@/hooks/UseSpecies";
 import type { BreedData, UrlSections } from "@/lib/api";
 
@@ -24,6 +25,8 @@ const ComparePage = () => {
 
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState<1 | 2>(1);
+
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (breeds.length > 0) {
@@ -78,6 +81,7 @@ const ComparePage = () => {
         breed2={breed2}
         onChangeBreed={handleOpenSelector}
         onReturn={handleReturn}
+        onZoomImage={(src) => setZoomImage(src)}
       />
       <BreedSelector
         isOpen={isSelectorOpen}
@@ -85,6 +89,12 @@ const ComparePage = () => {
         currentBreedId={selectedSlot === 1 ? breed2Id || "" : breed1Id || ""}
         section={section}
         onSelect={handleSelectBreed}
+      />
+      <ImageModal
+        imageUrl={zoomImage || ""}
+        altText={breed1?.name || breed2?.name || "Imagen"}
+        isOpen={!!zoomImage}
+        onOpenChange={() => setZoomImage(null)}
       />
     </>
   );

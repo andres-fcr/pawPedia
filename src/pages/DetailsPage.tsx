@@ -18,11 +18,7 @@ const DetailsPage = () => {
   const [breed, setBreed] = useState<BreedData | null>(null);
 
   const handleReturn = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate(`/${section}`);
-    }
+    navigate(`/${section}`);
   };
 
   useEffect(() => {
