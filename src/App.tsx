@@ -6,6 +6,7 @@ import ThemeProvider from "./providers/ThemeProvider";
 import NotFound from "./components/NotFound";
 import DetailsPage from "./pages/DetailsPage";
 import HomePage from "./pages/HomePage";
+import ComparePage from "./pages/ComparePage";
 
 function App() {
   return (
@@ -32,6 +33,19 @@ function App() {
           <Route path="/caballos" element={<MainLayout />}>
             <Route index element={<HomePage />} />
             <Route path=":id" element={<DetailsPage />} />
+          </Route>
+
+          <Route path="/cats/compare" element={<MainLayout />}>
+            <Route index element={<ComparePage />} />
+          </Route>
+          <Route path="/dogs/compare" element={<MainLayout />}>
+            <Route index element={<ComparePage />} />
+          </Route>
+          <Route path="/vacunos/compare" element={<MainLayout />}>
+            <Route index element={<ComparePage />} />
+          </Route>
+          <Route path="/caballos/compare" element={<MainLayout />}>
+            <Route index element={<ComparePage />} />
           </Route>
 
           <Route
