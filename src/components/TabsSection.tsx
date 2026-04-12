@@ -15,7 +15,7 @@ const TabsSection = ({ section, handleTabChange }: Props) => {
         className="container mx-auto mb-8"
         onValueChange={handleTabChange}
       >
-      <TabsList className="w-full max-w-md mx-auto bg-secondary/80 p-1.5 rounded-2xl border-2 border-border">
+      <TabsList className="max-w-md mx-auto gap-x-2 bg-secondary/80 p-1.5 rounded-2xl border-2 border-border">
         <TabsTrigger
           value="cats"
           className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md rounded-xl transition-all duration-300"

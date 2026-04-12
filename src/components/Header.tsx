@@ -1,12 +1,13 @@
 import { ThemeToggle } from "./ThemeToggle";
 import MobileMenu from "./MobileMenu";
+import { Link } from "react-router";
 
 const Header = () => {
   return (
     <header className="relative mb-8">
       <div className="absolute inset-0 soft-card -z-10" />
       <div className="flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-3 lg:gap-x-4">
+        <Link to="/" className="flex items-center gap-3 lg:gap-x-4">
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full transition-all duration-300 group-hover:from-primary/50 group-hover:to-accent/50" />
             <div className="relative flex items-center justify-center bg-gradient-to-br from-primary to-accent border-2 border-primary/20 rounded-full size-12 lg:size-16 overflow-hidden">
@@ -19,7 +20,7 @@ const Header = () => {
             </span>
             <span className="text-foreground">Pedia</span>
           </h1>
-        </div>
+        </Link>
         <MobileMenu />
         <div className="hidden md:flex">
           <ThemeToggle />
