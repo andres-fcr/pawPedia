@@ -21,13 +21,16 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       className="rounded-full bg-secondary text-primary hover:bg-primary/10 hover:text-primary transition-colors duration-300"
+      aria-label={
+        theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
+      }
+      aria-pressed={theme === "dark"}
     >
       {theme === "dark" ? (
-        <Sun className="h-5 w-5" />
+        <Sun className="h-5 w-5" aria-hidden="true" />
       ) : (
-        <Moon className="h-5 w-5" />
+        <Moon className="h-5 w-5" aria-hidden="true" />
       )}
-      <span className="sr-only">Cambiar tema</span>
     </Button>
   );
 }
